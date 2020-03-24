@@ -322,25 +322,21 @@ public class custom_order {
 			// STEP 10 DISPLAY COST AND SALES TAX
 			if (iOrderArt == 1) {
 				fCost = fPreisKuchen[iOrderNr];
-				fTax = (fCost * 0.19f) * 100;
-				Math.round(fTax);
-				fTax /= 100;
+				fTax = (fCost * 0.19f);
 				fCostGesamt = fCost + fTax;
 			} else {
 				fCost = fPreisCupcake[iOrderNr] + fPreisFrosting[iOrderFrosting] + fPreisFilling[iOrderFilling]
 						+ fPreisTopping[iOrderTopping];
-				fTax = (fCost * 0.19f) * 100;
-				Math.round(fTax);
-				fTax /= 100;
+				fTax = (fCost * 0.19f);
 				fCostGesamt = fCost + fTax;
 			}
 
 			System.out.println(" ");
 			System.out.println("Preis Ihrer Bestellung: ");
 			System.out.println("------------------------");
-			System.out.println("Preis (netto): " + fCost);
-			System.out.println("MWST: " + fTax);
-			System.out.println("Preis (brutto): " + fCostGesamt);
+			System.out.printf("Preis (netto): $%.2f\n", fCost);
+			System.out.printf("MWST: $%.2f\n", fTax);
+			System.out.printf("Preis (brutto): $%.2f\n", fCostGesamt);
 			System.out.println(" ");
 			System.out.println(" ");
 			System.out.println("Wir wünschen Ihnen einen schönen Tag - Ihr Java's Cake & Cupcake Shop!");
