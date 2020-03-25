@@ -4,6 +4,17 @@ import java.util.Scanner; // Needed for the Scanner class to read input
 
 public class custom_order {
 
+	public final static void newOrder() {
+		for (int i = 0; i < 6; i++) {
+			System.out.println(" ");
+		}
+		System.out.println("----------------------------------------------");
+		System.out.println("              NEUE  BESTELLUNG                ");
+		System.out.println("----------------------------------------------");
+		System.out.println(" ");
+		System.out.println(" ");
+	}
+
 	// STEP 1 PRINTING HELLO WORLD TO CONSOLE
 	public static void main(String[] args) {
 
@@ -13,7 +24,7 @@ public class custom_order {
 
 		// STEP 2 CREATE A SCANNER OBEJCT, DECLARE VARAIBLES, & PRINT STATEMENTS
 
-		String strAngestellterName, strKundenname;
+		String strAngestellterName, strKundenname, strNochmal;
 		String strMenuKuchenArr[] = new String[5];
 		String strMenuCupcakeArr[] = new String[5];
 		String strFrostingArr[] = new String[5];
@@ -24,7 +35,7 @@ public class custom_order {
 		float fPreisFrosting[] = new float[5];
 		float fPreisFilling[] = new float[5];
 		float fPreisTopping[] = new float[5];
-		int iOrderNr = 0, iOrderArt = 0, iOrderFrosting = 0, iOrderFilling = 0, iOrderTopping = 0, iNochmal;
+		int iOrderNr = 0, iOrderArt = 0, iOrderFrosting = 0, iOrderFilling = 0, iOrderTopping = 0, iDurchlauf = 0;
 		float fTax = 0, fCost = 0, fCostGesamt = 0;
 
 		Scanner myScanner = new Scanner(System.in);
@@ -81,7 +92,7 @@ public class custom_order {
 		strToppingArr[1] = "Vanille-Streusel";
 		strToppingArr[2] = "Haselnuss-Streusel";
 		strToppingArr[3] = "Karamell-Streusel";
-		strToppingArr[4] = "Schoko-Soße";
+		strToppingArr[4] = "Schoko-Soï¿½e";
 
 		fPreisTopping[0] = 1.00f;
 		fPreisTopping[1] = 0.50f;
@@ -92,7 +103,7 @@ public class custom_order {
 		do {
 			strAngestellterName = "";
 			strKundenname = "";
-			iNochmal = 0;
+			strNochmal = "";
 			iOrderNr = 0;
 			iOrderArt = 0;
 			iOrderFrosting = 0;
@@ -102,7 +113,11 @@ public class custom_order {
 			fCost = 0;
 			fCostGesamt = 0;
 
-			System.out.flush();
+			if (iDurchlauf > 0) {
+				newOrder();
+			}
+
+			iDurchlauf++;
 
 			System.out.println("----- Java's Cake & Cupcake Shop -----");
 			System.out.println(" ");
@@ -114,9 +129,9 @@ public class custom_order {
 					+ " und herzlich Willkommen im Java's Cake & Cupcake Shop");
 			System.out.println(" ");
 			do {
-				System.out.println("Bitte tragen Sie zunächst Ihren Namen ein: ");
+				System.out.println("Bitte tragen Sie zunaechst Ihren Namen ein: ");
 				strKundenname = myScanner.nextLine();
-			} while (strKundenname == "");
+			} while (strKundenname.equals(""));
 			System.out.println(" ");
 
 			// TEST CODE
@@ -148,11 +163,11 @@ public class custom_order {
 			// STEP 5 PROMPT USER TO ORDER
 
 			do {
-				System.out.println("Möchten Sie eine Kuchen (1) oder einen CupCake (2)? ");
+				System.out.println("Moechten Sie eine Kuchen (1) oder einen CupCake (2)? ");
 				iOrderArt = myScanner.nextInt();
 
 				if (iOrderArt != 1 && iOrderArt != 2) {
-					System.out.println("Geben Sie eine gültige Zahl ein");
+					System.out.println("Geben Sie eine gueltige Zahl ein");
 					System.out.println(" ");
 				}
 				System.out.println(" ");
@@ -160,18 +175,18 @@ public class custom_order {
 
 			if (iOrderArt == 1) {
 				do {
-					System.out.println("Welchen Kuchen möchten Sie? (Nummer des Kuchen eingeben): ");
+					System.out.println("Welchen Kuchen moechten Sie? (Nummer des Kuchen eingeben): ");
 					iOrderNr = myScanner.nextInt();
 					iOrderNr = iOrderNr - 1;
 
 					if (iOrderNr < 0 || iOrderNr > 4) {
-						System.out.println("Geben Sie eine gültige Zahl ein");
+						System.out.println("Geben Sie eine gueltige Zahl ein");
 						System.out.println(" ");
 					}
 
 					if (iOrderNr >= 0 && iOrderNr <= 4) {
 						System.out.println(" ");
-						System.out.println("Sie haben einen " + strMenuKuchenArr[iOrderNr] + " gewählt.");
+						System.out.println("Sie haben einen " + strMenuKuchenArr[iOrderNr] + " gewaehlt.");
 						System.out.println(" ");
 						System.out.println("------------------------");
 						System.out.println(" ");
@@ -180,18 +195,18 @@ public class custom_order {
 				} while (iOrderNr < 0 || iOrderNr > 4);
 			} else {
 				do {
-					System.out.println("Welchen CupCake möchten Sie? (Nummer des CupCake eingeben): ");
+					System.out.println("Welchen CupCake moechten Sie? (Nummer des CupCake eingeben): ");
 					iOrderNr = myScanner.nextInt();
 					iOrderNr = iOrderNr - 1;
 
 					if (iOrderNr < 0 || iOrderNr > 4) {
-						System.out.println("Geben Sie eine gültige Zahl ein");
+						System.out.println("Geben Sie eine gueltige Zahl ein");
 						System.out.println(" ");
 					}
 
 					if (iOrderNr >= 0 && iOrderNr <= 4) {
 						System.out.println(" ");
-						System.out.println("Sie haben einen " + strMenuCupcakeArr[iOrderNr] + " gewählt.");
+						System.out.println("Sie haben einen " + strMenuCupcakeArr[iOrderNr] + " gewaehlt.");
 						System.out.println(" ");
 						System.out.println("------------------------");
 						System.out.println(" ");
@@ -213,18 +228,18 @@ public class custom_order {
 				System.out.println(" ");
 
 				do {
-					System.out.println("Welches Frosting möchten Sie? ");
+					System.out.println("Welches Frosting moechten Sie? ");
 					iOrderFrosting = myScanner.nextInt();
 					iOrderFrosting -= 1;
 
 					if (iOrderFrosting < 0 || iOrderFrosting > 4) {
-						System.out.println("Geben Sie eine gültige Zahl ein");
+						System.out.println("Geben Sie eine gueltige Zahl ein");
 						System.out.println(" ");
 					}
 
 					if (iOrderFrosting >= 0 && iOrderFrosting <= 4) {
 						System.out.println(" ");
-						System.out.println("Sie haben ein " + strFrostingArr[iOrderFrosting] + "-Frosting gewählt.");
+						System.out.println("Sie haben ein " + strFrostingArr[iOrderFrosting] + "-Frosting gewaehlt.");
 						System.out.println(" ");
 						System.out.println("------------------------");
 						System.out.println(" ");
@@ -244,18 +259,18 @@ public class custom_order {
 				System.out.println(" ");
 
 				do {
-					System.out.println("Welches Filling möchten Sie? ");
+					System.out.println("Welches Filling meochten Sie? ");
 					iOrderFilling = myScanner.nextInt();
 					iOrderFilling -= 1;
 
 					if (iOrderFilling < 0 || iOrderFilling > 4) {
-						System.out.println("Geben Sie eine gültige Zahl ein");
+						System.out.println("Geben Sie eine gueltige Zahl ein");
 						System.out.println(" ");
 					}
 
 					if (iOrderFilling >= 0 && iOrderFilling <= 4) {
 						System.out.println(" ");
-						System.out.println("Sie haben ein " + strFillingArr[iOrderFilling] + "-Filling gewählt.");
+						System.out.println("Sie haben ein " + strFillingArr[iOrderFilling] + "-Filling gewaehlt.");
 						System.out.println(" ");
 						System.out.println("------------------------");
 						System.out.println(" ");
@@ -275,18 +290,18 @@ public class custom_order {
 				System.out.println(" ");
 
 				do {
-					System.out.println("Welches Topping möchten Sie? ");
+					System.out.println("Welches Topping moechten Sie? ");
 					iOrderTopping = myScanner.nextInt();
 					iOrderTopping -= 1;
 
 					if (iOrderTopping < 0 || iOrderTopping > 4) {
-						System.out.println("Geben Sie eine gültige Zahl ein");
+						System.out.println("Geben Sie eine guetige Zahl ein");
 						System.out.println(" ");
 					}
 
 					if (iOrderTopping >= 0 && iOrderTopping <= 4) {
 						System.out.println(" ");
-						System.out.println("Sie haben ein " + strToppingArr[iOrderTopping] + " gewählt.");
+						System.out.println("Sie haben ein " + strToppingArr[iOrderTopping] + " gewaehlt.");
 						System.out.println(" ");
 						System.out.println("------------------------");
 						System.out.println(" ");
@@ -339,7 +354,7 @@ public class custom_order {
 			System.out.printf("Preis (brutto): $%.2f\n", fCostGesamt);
 			System.out.println(" ");
 			System.out.println(" ");
-			System.out.println("Wir wünschen Ihnen einen schönen Tag - Ihr Java's Cake & Cupcake Shop!");
+			System.out.println("Wir wuenschen Ihnen einen schoenen Tag - Ihr Java's Cake & Cupcake Shop!");
 
 			System.out.println(" ");
 			System.out.println(" ");
@@ -347,29 +362,26 @@ public class custom_order {
 			System.out.println(" ");
 
 			do {
-				System.out.println("Möchten Sie noch eine Bestellung tätigen? (1 für Ja / 2 für Nein)");
-				
-				iNochmal = myScanner.nextInt();
 
-				if (iNochmal == 1 || iNochmal == 2) 
-				{
+				System.out.println("Moechten Sie noch eine Bestellung taetigen? (Ja / Nein)");
+
+				do {
+					strNochmal = myScanner.nextLine();
+				} while (strNochmal.equals(""));
+
+				if (strNochmal.equals("Ja") || strNochmal.equals("Nein")) {
 					continue;
-				}
-				else
-				{
+				} else {
 					System.out.println(" ");
 					System.out.println("------------------------");
-					System.out.println("1 für Ja oder 2 für Nein eingeben!!!");
+					System.out.println("Ja oder Nein eingeben!!!");
 					System.out.println("------------------------");
 					System.out.println(" ");
 				}
-			} while (iNochmal != 1 && iNochmal != 2);
+			} while (!strNochmal.equals("Ja") && !strNochmal.equals("Nein"));
 
-		} while ((iNochmal == 1));
+		} while (strNochmal.equals("Ja"));
 		myScanner.close();
 	}
 
 }
-
-
-
